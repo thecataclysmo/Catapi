@@ -1,0 +1,9 @@
+.env
+bot-env/
+bin/
+lib/
+lib64/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd #dunno what these are, but claude recommended and i was like why not!
