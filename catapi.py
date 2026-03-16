@@ -12,8 +12,11 @@ client = discord.Client(intents=intents)
 TOKEN = os.getenv("DISCORD_TOKEN")
 COUNTER_ID = int(os.getenv("COUNT_CHANNEL_ID"))
 WRIJU = int(os.getenv("WRIJU_ID"))
+STATUS_FILE = "/home/thecataclysmo/discordbot/bot_status.txt"
 @client.event
 async def on_ready():
+    with open(STATUS_FILE, "w") as f:
+         f.write("online")
     print(f'Logged in as {client.user}')
 
 @client.event
@@ -52,7 +55,10 @@ async def on_message(message):
                  f"RAM: {mem_used:.1f}MB / {mem_total:.1f}MB\n"
                  f"DISK: {disk_used:.1f}GB / {disk_total:.1f}GB")
         await message.channel.send(stats)
-
+@client.event
+async def on_disconnect():
+     with open(STATUS_FILE, "w") as f:
+          f.write("offline")
 @client.event
 async def on_error(event, *args, **kwargs):
     print("Error in event:", event)
