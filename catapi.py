@@ -20,6 +20,11 @@ async def on_ready():
     print(f'Logged in as {client.user}')
 
 @client.event
+async def on_resumed():
+    with open(STATUS_FILE, "w") as f:
+         f.write("online")
+    print('Resumed connection')
+@client.event
 async def on_message(message):
     if message.author == client.user:
         return
