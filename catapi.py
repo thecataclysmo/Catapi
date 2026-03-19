@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 import discord
 import psutil
 from responses import responses
+from discord.ext import commands
 import traceback
 
 intents = discord.Intents.default()
@@ -13,6 +14,7 @@ TOKEN = os.getenv("DISCORD_TOKEN")
 COUNTER_ID = int(os.getenv("COUNT_CHANNEL_ID"))
 WRIJU = int(os.getenv("WRIJU_ID"))
 STATUS_FILE = "/home/thecataclysmo/discordbot/bot_status.txt"
+bot = commands.Bot(command_prefix='$', intents=intents)
 @client.event
 async def on_ready():
     with open(STATUS_FILE, "w") as f:
@@ -68,5 +70,10 @@ async def on_disconnect():
 async def on_error(event, *args, **kwargs):
     print("Error in event:", event)
     traceback.print_exc()
+
+@bot.command()
+async def test(ctx, arg):
+     await ctx.send(arg)
+     
 client.run(TOKEN)        
 
