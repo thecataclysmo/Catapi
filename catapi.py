@@ -74,6 +74,7 @@ async def on_error(event, *args, **kwargs):
 @bot.command()
 async def test(ctx, arg):
      await ctx.send(arg)
-     
+
+bot.add_command(test)    
 client.run(TOKEN)        
 
