@@ -1,7 +1,8 @@
 import random
 pongresponses = ["https://tenor.com/xAPKvJgLSr.gif", "https://tenor.com/eG2AiNFW7sK.gif", "https://tenor.com/rT4KSQiWYFq.gif"]
-cataresponses = ["https://tenor.com/ekjQkXWDZN5.gif", "https://tenor.com/ntwr2EZpUAB.gif", " https://tenor.com/pPuoGy1htU6.gif"]
+catapingresponses = ["https://tenor.com/ekjQkXWDZN5.gif", "https://tenor.com/ntwr2EZpUAB.gif", " https://tenor.com/pPuoGy1htU6.gif"]
 waifuresponses = ["https://tenor.com/bVCiJ.gif", "https://tenor.com/peWPjVIQMUi.gif", "https://tenor.com/i1mRZdUX6kp.gif"]
+cataresponses = ["https://tenor.com/bXnKp.gif", "https://tenor.com/bYI3r.gif", "https://tenor.com/ogbnXjSCl33.gif"]
 responses = {
         "hi catapi": lambda m: f"Hello {m.author.display_name}!",
         "💀" : "💀",
@@ -13,6 +14,7 @@ responses = {
         "bad bot": "https://tenor.com/bkmB206JnPH.gif",
         "ride" : "https://tenor.com/qXA6XNn6pxl.gif",
         "w.claim" : lambda m: random.choice(waifuresponses),
-        "<@797232493131857951>" : lambda m: random.choice(cataresponses), 
+        "<@797232493131857951>" : lambda m: random.choice(catapingresponses), 
         "hawk": "tuah",
+        "cata" : lambda m: random.choice(cataresponses),
         }
