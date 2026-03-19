@@ -9,26 +9,26 @@ import traceback
 intents = discord.Intents.default()
 intents.message_content = True
 load_dotenv()
-client = discord.Client(intents=intents)
+
 TOKEN = os.getenv("DISCORD_TOKEN")
 COUNTER_ID = int(os.getenv("COUNT_CHANNEL_ID"))
 WRIJU = int(os.getenv("WRIJU_ID"))
 STATUS_FILE = "/home/thecataclysmo/discordbot/bot_status.txt"
 bot = commands.Bot(command_prefix='$', intents=intents)
-@client.event
+@bot.event
 async def on_ready():
     with open(STATUS_FILE, "w") as f:
          f.write("online")
-    print(f'Logged in as {client.user}')
+    print(f'Logged in as {bot.user}')
 
-@client.event
+@bot.event
 async def on_resumed():
     with open(STATUS_FILE, "w") as f:
          f.write("online")
     print('Resumed connection')
-@client.event
+@bot.event
 async def on_message(message):
-    if message.author == client.user:
+    if message.author == bot.user:
         return
     content = message.content.lower()    
     for trigger, reply in responses.items():
@@ -62,11 +62,11 @@ async def on_message(message):
                  f"RAM: {mem_used:.1f}MB / {mem_total:.1f}MB\n"
                  f"DISK: {disk_used:.1f}GB / {disk_total:.1f}GB")
         await message.channel.send(stats)
-@client.event
+@bot.event
 async def on_disconnect():
      with open(STATUS_FILE, "w") as f:
           f.write("offline")
-@client.event
+@bot.event
 async def on_error(event, *args, **kwargs):
     print("Error in event:", event)
     traceback.print_exc()
@@ -74,7 +74,6 @@ async def on_error(event, *args, **kwargs):
 @bot.command()
 async def test(ctx, arg):
      await ctx.send(arg)
-
-bot.add_command(test)    
-client.run(TOKEN)        
+    
+bot.run(TOKEN)        
 
