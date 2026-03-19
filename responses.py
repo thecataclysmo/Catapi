@@ -14,4 +14,5 @@ responses = {
         "ride" : "https://tenor.com/qXA6XNn6pxl.gif",
         "w.claim" : lambda m: random.choice(waifuresponses),
         "<@797232493131857951>" : lambda m: random.choice(cataresponses), 
+        "hawk": "tuah",
         }
