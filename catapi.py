@@ -62,6 +62,7 @@ async def on_message(message):
                  f"RAM: {mem_used:.1f}MB / {mem_total:.1f}MB\n"
                  f"DISK: {disk_used:.1f}GB / {disk_total:.1f}GB")
         await message.channel.send(stats)
+    await bot.process_commands(message)    
 @bot.event
 async def on_disconnect():
      with open(STATUS_FILE, "w") as f:
